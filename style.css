@@ -1,0 +1,55 @@
+.element {
+    width: 50px;
+    height: 50px;
+    border: 1px solid grey;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    margin: 5px;
+    flex: 1;
+}
+
+.element.non-empty {
+    background-color: #777;
+    color: #eee;
+}
+
+.matrix {
+    display: flex;
+    margin: 100px 0 0 50px;
+}
+
+.settings {
+    background: #eee;
+    position: fixed;
+    width: 100%;
+    text-align: right;
+    top: 0;
+    right: 0;
+}
+
+.settings .btn,
+.settings input {
+    border: none;
+    font-size: 40px;
+    color: #777;
+    height: 50px;
+    background: inherit;
+}
+
+.settings input {
+    text-align: center;
+}
+
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+*:focus {
+    outline: none;
+}
