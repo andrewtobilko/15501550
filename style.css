@@ -1,4 +1,4 @@
-.element {
+.lab1 .element {
     width: 50px;
     height: 50px;
     border: 1px solid grey;
@@ -9,17 +9,17 @@
     flex: 1;
 }
 
-.element.non-empty {
+.lab1 .element.non-empty {
     background-color: #777;
     color: #eee;
 }
 
-.matrix {
+.lab1 .matrix {
     display: flex;
     margin: 100px 0 0 50px;
 }
 
-.settings {
+.lab1 .settings {
     background: #eee;
     position: fixed;
     width: 100%;
@@ -28,8 +28,8 @@
     right: 0;
 }
 
-.settings .btn,
-.settings input {
+.lab1 .settings .btn,
+.lab1 .settings input {
     border: none;
     font-size: 40px;
     color: #777;
@@ -37,8 +37,8 @@
     background: inherit;
 }
 
-.settings input {
-    text-align: center;
+.lab1 .settings input {
+    text-align: right;
 }
 
 
@@ -48,6 +48,10 @@ input[type=number]::-webkit-outer-spin-button {
     -moz-appearance: none;
     appearance: none;
     margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
 }
 
 *:focus {

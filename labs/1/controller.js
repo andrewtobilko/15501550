@@ -1,6 +1,4 @@
-var app = angular.module("app", []);
-
-app.controller('FirstLabController', function() {
+angular.module('15501550').controller('FirstLabController', function() {
 
     var self = this, DEFAULT_VALUE = 0;
 
@@ -22,6 +20,7 @@ app.controller('FirstLabController', function() {
             }
         }
     };
+
     self.fill = function () {
         self.matrix = [];
         for (var i = 0; i < self.dimension; ++i) {

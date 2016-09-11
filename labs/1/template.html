@@ -1,0 +1,17 @@
+<div class="lab1">
+    <div class="settings">
+        <input type="number" min="3" max="20" ng-model="ctrl.dimension" ng-change="ctrl.refill()">
+        <button class="btn" ng-click="ctrl.refill()"><i class="ion-ios-plus"></i></button>
+        <button class="btn" ng-click="ctrl.fill()"><i class="ion-ios-close"></i></button>
+    </div>
+
+    <div class="matrix" ng-init="ctrl.fill()">
+        <div ng-repeat="i in [].constructor(ctrl.dimension) track by $index">
+            <div ng-repeat="j in [].constructor(ctrl.dimension) track by $index">
+                <div class="element" ng-class="{'non-empty': !ctrl.isEmpty($index, $parent.$index)}">
+                    {{ctrl.matrix[$index][$parent.$index]}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
