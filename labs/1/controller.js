@@ -20,14 +20,12 @@ angular.module('15501550').controller('FirstLabController', function() {
             }
         }
     };
-
     self.fill = function () {
         self.matrix = [];
         for (var i = 0; i < self.dimension; ++i) {
             self.matrix[i] = new Array(self.dimension).fill(DEFAULT_VALUE);
         }
     };
-
     self.isEmpty = function(i, j) {
         return self.matrix[i][j] == 0;
     }
