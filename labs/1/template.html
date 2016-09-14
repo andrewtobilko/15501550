@@ -1,8 +1,9 @@
 <div class="lab1">
+
     <div class="settings">
         <input type="number" min="3" max="20" ng-model="ctrl.dimension" ng-change="ctrl.refill()">
-        <button class="btn" ng-click="ctrl.refill()"><i class="ion-ios-plus"></i></button>
-        <button class="btn" ng-click="ctrl.fill()"><i class="ion-ios-close"></i></button>
+        <button class="btn" ng-click="ctrl.refill()"><i class="ion-ios-plus"></i>+</button>
+        <button class="btn" ng-click="ctrl.fill()"><i class="ion-ios-close"></i>-</button>
     </div>
 
     <div class="matrix" ng-init="ctrl.fill()">
@@ -14,4 +15,5 @@
             </div>
         </div>
     </div>
+
 </div>
