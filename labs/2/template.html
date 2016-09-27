@@ -1,1 +1,5 @@
-<div class="lab2"></div>
+<div class="lab2">
+    <div ng-repeat="method in ctrl.methods">
+        <p>{{ method() }} -> {{ method().compute() }}</p>
+    </div>
+</div>

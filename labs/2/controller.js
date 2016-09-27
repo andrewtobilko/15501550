@@ -1,4 +1,7 @@
 app.controller('SecondLabController', function () {
+
+    var self = this;
+
     function getPi(methodNumber) {
         var currentPi = 0, N = 10000000;
 
@@ -49,16 +52,10 @@ app.controller('SecondLabController', function () {
 
     }
 
-    var method1 = getPi(1),
-        method2 = getPi(2),
-        method3 = getPi(3);
-
-    console.log(method1());
-    console.log(method2());
-    console.log(method3());
-
-    console.log(method1.compute());
-    console.log(method2.compute());
-    console.log(method3.compute());
+    self.methods = [];
+    _.range(1, 4).forEach(function(i) {
+        var method = getPi(i);
+        self.methods.push({method: method, result: method.compute() });
+    });
 
 });
