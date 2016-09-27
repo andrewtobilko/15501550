@@ -1,7 +1,8 @@
-app.controller('SecondLabController', function () {
+app.controller('SecondLabController', function () { // todo : avoid duplicate code in closures
 
     var self = this;
 
+    // the origin task
     function getPi(methodNumber) {
         var currentPi = 0, N = 10000000;
 
@@ -17,7 +18,7 @@ app.controller('SecondLabController', function () {
                     if (Math.pow(Math.random() * R * 2 - R, 2) + Math.pow(Math.random() * R * 2 - R, 2) < Math.pow(5, 2)) pInside++;
                 }
                 return currentPi = (4 * pInside / pTotal);
-            }
+            };
             return f;
         } else if (methodNumber === 1) {
             var f = function () {
@@ -30,7 +31,7 @@ app.controller('SecondLabController', function () {
                     currentPi *= Math.pow(n, 2) / (Math.pow(n, 2) - Math.pow(3 / 4, 2));
                 }
                 return currentPi = a * currentPi;
-            }
+            };
             return f;
         } else if (methodNumber === 3) {
             var f = function () {
@@ -40,10 +41,12 @@ app.controller('SecondLabController', function () {
                 cleanCurrentPi();
                 for (var k = 0; k < N; ++k) currentPi += Math.pow(-1, k) / Math.pow(4, k) * (2 / (4 * k + 1) + 2 / (4 * k + 2) + 1 / (4 * k + 3));
                 return currentPi;
-            }
+            };
             return f;
         } else {
-            console.log("Unknown method number!");
+            return function () {
+                return 'Unknown method number!';
+            };
         }
 
         function cleanCurrentPi(newValue) { // refresh the value before a new calculation
@@ -53,6 +56,7 @@ app.controller('SecondLabController', function () {
     }
 
     self.methods = [];
+
     _.range(1, 4).forEach(function(i) {
         var method = getPi(i);
         self.methods.push({method: method, result: method.compute() });
