@@ -1,4 +1,4 @@
-angular.module('15501550').controller('FirstLabController', function() {
+app.controller('FirstLabController', function() {
 
     var self = this, DEFAULT_VALUE = 0;
 

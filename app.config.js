@@ -1,4 +1,4 @@
-angular.module('15501550', ['ngRoute'])
+var app = angular.module('15501550', ['ngRoute'])
 
     .config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
 
@@ -6,6 +6,11 @@ angular.module('15501550', ['ngRoute'])
             .when('/lab1', {
                 templateUrl: 'labs/1/template.html',
                 controller: 'FirstLabController',
+                controllerAs: 'ctrl'
+            })
+            .when('/lab2', {
+                templateUrl: 'labs/2/template.html',
+                controller: 'SecondLabController',
                 controllerAs: 'ctrl'
             });
 
