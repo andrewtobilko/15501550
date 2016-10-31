@@ -1,18 +1,30 @@
-function CoffeeMachine(power) {
+function CoffeeMachine(power, capacity) {
 
-    this.waterAmount = 0;
+    var self = this;
 
-    function getBoilTime() {
-        return 1000;
-    }
+    var WATER_HEAT_CAPACITY = 4200,
+        waterAmount = 0;
 
-    function onReady() {
-        alert('Coffee is ready!');
-    }
+    function getBoilTime() { return waterAmount * WATER_HEAT_CAPACITY * 80 / power; }
+    function onReady() { alert('Coffee is ready!'); }
+    function validateWaterAmount(value) { return value >= 0 && value <= capacity; }
 
-    this.run = function() {
+    self.run = function() {
         setTimeout(onReady, getBoilTime());
     };
+
+    self.waterAmount = function (/*optional*/ amount) {
+        return arguments.length === 0 ?
+            waterAmount :
+            validateWaterAmount(amount) ? waterAmount = amount : waterAmount;
+    };
+
+    self.addWater = function (amount) {
+        return validateWaterAmount(waterAmount + amount) ?
+            waterAmount += amount :
+            waterAmount;
+    }
+
 }
 
 var coffeeMachine = new CoffeeMachine(100);
