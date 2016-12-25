@@ -1,0 +1,125 @@
+.products > div {
+    height: 33%;
+    width: 100%;
+    position: relative;
+}
+
+.products, body, html {
+    height: 100%;
+    padding-top: 10px;
+    background: snow;
+}
+
+.products .luxury-wrp,
+.products .middle-wrp,
+.products .poor-wrp {
+    padding: 20px;
+    border-radius: 20px;
+    height: calc(100% - 20px) !important;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.products .luxury-wrp,
+.products .middle-wrp,
+.products .poor-wrp > div {
+    display: block;
+}
+
+.products .luxury-wrp,
+.ticket.luxury-ticket {
+    background: goldenrod;
+}
+
+.products .middle-wrp,
+.ticket.middle-ticket {
+    background: silver;
+}
+
+.products .poor-wrp,
+.ticket.poor-ticket {
+    background: rosybrown;
+}
+
+.products .details,
+.products .options,
+.products .features,
+.products .price {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.products .title {
+    text-align: center;
+    margin-top: 0;
+}
+
+.products .glyphicon.glyphicon-shopping-cart {
+    position: absolute;
+    right: 10px;
+    font-size: 30px;
+    cursor: pointer;
+    top: 50%;
+}
+
+.ticket {
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.products label {
+    font-style: normal;
+    font-weight: 100;
+    display: block;
+}
+
+.products .details .details-elements,
+.products .features .features-elements,
+.products .price .price-elements,
+.products .options .options-elements {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
+.products .details,
+.products .features,
+.products .options,
+.products .price {
+    height: calc(100% - 20px);
+}
+
+
+.products .details-elements-wrp,
+.products .features-elements-wrp,
+.products .options-elements-wrp,
+.products .price-elements-wrp {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+}
+
+.products .options-elements-wrp,
+.products .price-elements-wrp {
+    text-align: center;
+}
+
+.products input[type='checkbox'] {
+    width: 20px;
+    height: 20px;
+}
+
+.products .price .price-elements .price-elements-wrp {
+    font-size: 30px;
+}
+
+.products h4 {
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+}
+
+.cart {
+    max-height: 90%;
+    overflow-y: scroll;;
+}

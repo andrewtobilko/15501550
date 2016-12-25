@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 6 - Andrew Tobilko</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+
+<div class="products col-xs-12 col-md-8">
+    <div class="luxury">
+        <div class="luxury-wrp row">
+            <div class="details col-md-3">
+                <h4 class="title">Details</h4>
+                <div class="details-elements">
+                    <div class="details-elements-wrp">
+                        <label for="poor-first-name">Enter your first name:</label>
+                        <input type="text" id="luxury-first-name">
+                        <label for="poor-first-name">Enter the last name:</label>
+                        <input type="text" id="luxury-last-name">
+                    </div>
+                </div>
+            </div>
+            <div class="options col-md-3">
+                <h4 class="title">Options</h4>
+                <div class="options-elements">
+                    <div class="options-elements-wrp">
+                        <select id="luxury-options" onchange="onChange('luxury')">
+                            <option value="ADULT">adult</option>
+                            <option value="CHILD">child</option>
+                            <option value="STUDENT">student</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="features col-md-3">
+                <h4 class="title">Services</h4>
+                <div class="features-elements">
+                    <div class="features-elements-wrp">
+                        <div class="values" id="luxury-services">
+                            <label><input type="checkbox" value="LINENS"
+                                          onclick="onChange('luxury')"> linens</label>
+                            <label><input type="checkbox" value="TEA" onclick="onChange('luxury')"> a
+                                cup
+                                of tea</label>
+                            <label><input type="checkbox" value="CHOCOLATE"
+                                          onclick="onChange('luxury')"> a chocolate bar</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="price col-md-3">
+                <h4 class="title">Price</h4>
+                <div class="price-elements">
+                    <div class="price-elements-wrp">
+                        <div id="luxury-price"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" onclick="add('luxury')"></span>
+    </div>
+    <div class="middle">
+        <div class="middle-wrp">
+            <div class="details col-md-3">
+                <h4 class="title">Details</h4>
+                <div class="details-elements">
+                    <div class="details-elements-wrp">
+                        <label for="poor-first-name">Enter your first name:</label>
+                        <input type="text" id="middle-first-name">
+                        <label for="poor-first-name">Enter the last name:</label>
+                        <input type="text" id="middle-last-name">
+                    </div>
+                </div>
+            </div>
+            <div class="options col-md-3">
+                <h4 class="title">Options</h4>
+                <div class="options-elements">
+                    <div class="options-elements-wrp">
+                        <select id="middle-options" onchange="onChange('middle')">
+                            <option value="ADULT">adult</option>
+                            <option value="CHILD">child</option>
+                            <option value="STUDENT">student</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="features col-md-3">
+                <h4 class="title">Services</h4>
+                <div class="features-elements">
+                    <div class="features-elements-wrp">
+                        <div class="values" id="middle-services">
+                            <label><input type="checkbox" value="LINENS"
+                                          onclick="onChange('middle')"> linens</label>
+                            <label><input type="checkbox" value="TEA" onclick="onChange('middle')"> a
+                                cup
+                                of tea</label>
+                            <label><input type="checkbox" value="CHOCOLATE"
+                                          onclick="onChange('middle')"> a chocolate bar</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="price col-md-3">
+                <h4 class="title">Price</h4>
+                <div class="price-elements">
+                    <div class="price-elements-wrp">
+                        <div id="middle-price"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" onclick="add('middle')"></span>
+    </div>
+    <div class="poor">
+        <div class="poor-wrp">
+            <div class="details col-md-3">
+                <h4 class="title">Details</h4>
+                <div class="details-elements">
+                    <div class="details-elements-wrp">
+                        <label for="poor-first-name">Enter your first name:</label>
+                        <input type="text" id="poor-first-name">
+                        <label for="poor-first-name">Enter the last name:</label>
+                        <input type="text" id="poor-last-name">
+                    </div>
+                </div>
+            </div>
+            <div class="options col-md-3">
+                <h4 class="title">Options</h4>
+                <div class="options-elements">
+                    <div class="options-elements-wrp">
+                        <select id="poor-options" onchange="onChange('poor')">
+                            <option value="ADULT">adult</option>
+                            <option value="CHILD">child</option>
+                            <option value="STUDENT">student</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="features col-md-3">
+                <h4 class="title">Services</h4>
+                <div class="features-elements">
+                    <div class="features-elements-wrp">
+                        <div class="values" id="poor-services">
+                            <label><input type="checkbox" value="LINENS"
+                                          onclick="onChange('poor')"> linens</label>
+                            <label><input type="checkbox" value="TEA" onclick="onChange('poor')"> a
+                                cup
+                                of tea</label>
+                            <label><input type="checkbox" value="CHOCOLATE"
+                                          onclick="onChange('poor')"> a chocolate bar</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="price col-md-3">
+                <h4 class="title">Price</h4>
+                <div class="price-elements">
+                    <div class="price-elements-wrp">
+                        <div id="poor-price"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" onclick="add('poor')"></span>
+    </div>
+</div>
+<div class="cart col-xs-6 col-md-4" id="cart"></div>
+</body>
+</html>
