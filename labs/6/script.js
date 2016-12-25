@@ -57,16 +57,27 @@ function updateCart() {
         var div = document.createElement('div');
         div.classList.add(ticket.type + '-ticket');
         div.classList.add('ticket');
-        div.innerHTML = ticket.name + "<br>" + ticket.id + "<br>" + ticket.price;
-        total += ticket.price;
+        div.innerHTML = (ticket.name.trim() ? 'Passenger: ' + ticket.name + "<br>" : '') +
+            ('ID: ' + ticket.id + '<br>Price: ' + ticket.price + '$');
+
+        var removeBtn = document.createElement('span');
+
+        removeBtn.elementToRemove = ticket; // a dirty hack
+        removeBtn.classList.add('glyphicon');
+        removeBtn.classList.add('glyphicon-remove');
+        removeBtn.classList.add('remove-btn');
+
+        removeBtn.onclick = function() {
+            // remove a ticket by id from a cart
+            cart.splice(cart.indexOf(this.elementToRemove), 1);
+            updateCart();
+        };
+        div.appendChild(removeBtn);
         cartNode.appendChild(div);
+        total += ticket.price;
     }
-
-    var totalNode = document.createElement('div');
-    totalNode.id = 'total';
-    totalNode.innerHTML = 'Total: ' + total + '$';
-
-    cartNode.appendChild(totalNode);
+    var totalNode = document.getElementById('total');
+    document.getElementById('total').innerHTML = cart.length !== 0 ? ('Total: ' + total + '$') : '';
 }
 
 function Ticket(firstName, lastName, price, type) {

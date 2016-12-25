@@ -27,6 +27,15 @@ function CoffeeMachine(power, capacity) {
 
 }
 
+function Machine() {
+    var self = this;
+
+    self.run = function() {
+        alert("The machine is running!");
+    }
+
+}
+
 var coffeeMachine = new CoffeeMachine(100);
 coffeeMachine.waterAmount = 200;
 
