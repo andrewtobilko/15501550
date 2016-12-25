@@ -20,18 +20,28 @@ window.addEventListener('load', function () {
                 iframe.src = newSource;
             }
 
-            function changeIframeVisibility(self) {
+            function changeIframeVisibility(e) {
                 var classes = iframe.classList;
-                self.selected ? classes.remove('hidden') : classes.add('hidden');
+                if (e.selected) {
+                    classes.remove('hidden');
+                } else {
+                    classes.add('hidden');
+                    e.popup.close();
+                }
             }
 
             function closeThePrevious(current) {
                 var children = ul.children;
                 for (var i = 0; i < children.length; ++i) {
                     var li = children[i];
-                    if (li.selected && li != current) {
-                        li.innerHTML = li.originalInnerHTML;
-                        li.selected = false;
+                    if (li != current) {
+                        if (li.selected) {
+                            li.innerHTML = li.originalInnerHTML;
+                            li.selected = false;
+                        }
+                        if (li.popup) {
+                            li.popup.close();
+                        }
                     }
                 }
             }
@@ -44,13 +54,13 @@ window.addEventListener('load', function () {
                 li.onclick = function () {
                     var self = this;
 
-
                     self.innerHTML = self.selected ? self.originalInnerHTML : self.originalInnerHTML + " (open)";
                     self.selected = !self.selected;
 
                     if (self.selected) {
                         closeThePrevious(self);
                         updateIframeView(self.originalInnerHTML);
+                        self.popup = window.open(self.originalInnerHTML, self.originalInnerHTML, "width=50,height=50");
                     }
                     changeIframeVisibility(self);
                 };
@@ -59,6 +69,7 @@ window.addEventListener('load', function () {
 
             task.appendChild(ul);
         }
+
         function createIframe() {
             iframe = document.createElement('iframe');
             iframe.classList.add('hidden');
@@ -70,6 +81,7 @@ window.addEventListener('load', function () {
 
         return task;
     }
+
     function doSecondTask() {
         var task = document.createElement('div'), startButton, textField, container, runnableDiv;
         task.classList.add('second-task');
@@ -80,7 +92,7 @@ window.addEventListener('load', function () {
             var STEP = 10, INTERVAL = 50;
             startButton = document.createElement('button');
             startButton.innerHTML = 'Click to start an animation!';
-            startButton.onclick = function() {
+            startButton.onclick = function () {
                 startButton.disabled = true;
 
                 runnableDiv = document.createElement('div');
@@ -98,7 +110,7 @@ window.addEventListener('load', function () {
                     }
                 }, INTERVAL);
             };
-            
+
             task.appendChild(startButton);
         }
 
@@ -115,7 +127,7 @@ window.addEventListener('load', function () {
 
             task.appendChild(textField);
         }
-        
+
         function createContainer() {
             container = document.createElement('div');
             container.classList.add('container');
@@ -129,6 +141,7 @@ window.addEventListener('load', function () {
 
         return task;
     }
+
     function doThirdTask() {
         var task = document.createElement('div'), parameters = document.createElement('div');
         task.classList.add('third-task');
@@ -156,6 +169,7 @@ window.addEventListener('load', function () {
 
         return task;
     }
+
     function performAllTask() {
         document.body.appendChild(doFirstTask());
         document.body.appendChild(doSecondTask());
