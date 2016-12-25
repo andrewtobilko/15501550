@@ -1,3 +1,23 @@
 .hidden {
     display: none;
 }
+
+.container {
+    border: 1px solid black;
+    height: 20px;
+    width: 500px;
+    position: relative;
+}
+
+.runnable {
+    height: inherit;
+    font-size: 20px;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+}
+
+iframe, ul {
+    display: inline-block;
+}
+

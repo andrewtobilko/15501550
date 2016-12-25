@@ -72,16 +72,34 @@ window.addEventListener('load', function () {
     }
 
     function doSecondTask() {
-        var task = document.createElement('div'), startButton, textField;
+        var task = document.createElement('div'), startButton, textField, container, runnableDiv;
         task.classList.add('second-task');
         task.innerHTML = "Task #2";
+        var interval;
 
         function createStartButton() {
+            var STEP = 10, INTERVAL = 50;
             startButton = document.createElement('button');
             startButton.innerHTML = 'Click to start an animation!';
             startButton.onclick = function() {
+                startButton.disabled = true;
 
+                runnableDiv = document.createElement('div');
+                runnableDiv.classList.add('runnable');
+                runnableDiv.innerHTML = textField.value;
+                container.appendChild(runnableDiv);
+
+                setInterval(function () {
+                    var offset = parseInt(runnableDiv.style.left) ? parseInt(runnableDiv.style.left) : 0;
+                    if (offset + runnableDiv.clientWidth + STEP > container.clientWidth) {
+                        runnableDiv.style.left = 0;
+                    } else {
+                        offset += STEP;
+                        runnableDiv.style.left = offset + "px";
+                    }
+                }, INTERVAL);
             };
+            
             task.appendChild(startButton);
         }
 
@@ -89,11 +107,26 @@ window.addEventListener('load', function () {
             textField = document.createElement('input');
             textField.type = 'text';
             textField.placeholder = 'Make this text runnable!';
+
+            textField.onkeyup = function () {
+                if (runnableDiv) {
+                    runnableDiv.innerHTML = textField.value;
+                }
+            };
+
             task.appendChild(textField);
+        }
+        
+        function createContainer() {
+            container = document.createElement('div');
+            container.classList.add('container');
+
+            task.appendChild(container);
         }
 
         createTextField();
         createStartButton();
+        createContainer();
 
         return task;
     }
