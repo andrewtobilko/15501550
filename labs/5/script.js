@@ -70,7 +70,6 @@ window.addEventListener('load', function () {
 
         return task;
     }
-
     function doSecondTask() {
         var task = document.createElement('div'), startButton, textField, container, runnableDiv;
         task.classList.add('second-task');
@@ -130,15 +129,33 @@ window.addEventListener('load', function () {
 
         return task;
     }
-
     function doThirdTask() {
-        var task = document.createElement('div');
+        var task = document.createElement('div'), parameters = document.createElement('div');
         task.classList.add('third-task');
         task.innerHTML = "Task #3";
 
+        var location = document.createElement('p');
+        location.innerHTML = "location = " + window.location;
+        parameters.appendChild(location);
+
+        var search = document.createElement('p');
+        search.innerHTML = "location.search = " + window.location.search;
+        parameters.appendChild(search);
+
+        var params = document.createElement('p');
+        params.innerHTML = "parameters = ";
+        parameters.appendChild(params);
+
+        params.innerHTML = "parameters = [";
+        window.location.search.substr(1).split("&").forEach(function (item) {
+            params.innerHTML += item + ", ";
+        });
+        params.innerHTML = params.innerHTML.substr(0, params.innerHTML.length - 2) + "]";
+
+        task.appendChild(parameters);
+
         return task;
     }
-
     function performAllTask() {
         document.body.appendChild(doFirstTask());
         document.body.appendChild(doSecondTask());
