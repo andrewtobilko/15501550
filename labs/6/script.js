@@ -67,7 +67,7 @@ function updateCart() {
         removeBtn.classList.add('glyphicon-remove');
         removeBtn.classList.add('remove-btn');
 
-        removeBtn.onclick = function() {
+        removeBtn.onclick = function () {
             // remove a ticket by id from a cart
             cart.splice(cart.indexOf(this.elementToRemove), 1);
             updateCart();
@@ -77,7 +77,20 @@ function updateCart() {
         total += ticket.price;
     }
     var totalNode = document.getElementById('total');
-    document.getElementById('total').innerHTML = cart.length !== 0 ? ('Total: ' + total + '$') : '';
+
+    var payOff = document.createElement('button');
+    payOff.innerHTML = 'Order!';
+
+    payOff.classList.add('btn');
+    payOff.classList.add('btn-primary');
+    payOff.classList.add('btn-lg');
+    payOff.classList.add('pay-off-btn');
+
+    payOff.setAttribute('data-toggle', 'modal');
+    payOff.setAttribute('data-target', '#modal');
+
+    totalNode.innerHTML = cart.length !== 0 ? ('Total: ' + total + '$') : '';
+    totalNode.appendChild(payOff);
 }
 
 function Ticket(firstName, lastName, price, type) {
@@ -102,5 +115,23 @@ window.addEventListener('load', function () {
     }
 
     setDefaultValues();
+
+    $('#customerCardNumber').mask('9999 9999 9999 9999');
+    $('#customerDate').mask('99/9999');
+    $('#customerCode').mask('999');
+
+    function jumpToTheNext(from, to) {
+        document.getElementById(from).onkeyup = function () {
+            var i = document.getElementById(from);
+            if (!i.value.includes('_')) {
+                i.blur();
+                document.getElementById(to).focus();
+            }
+        };
+    }
+
+    jumpToTheNext('customerCardNumber', 'customerDate');
+    jumpToTheNext('customerDate', 'customerCode');
+    jumpToTheNext('customerCode', 'finish');
 
 }, false);

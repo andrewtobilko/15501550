@@ -1,7 +1,6 @@
 function Machine() {
     var self = this;
 
-    self.aaaa = 2;
     self.run = function () {
         alert("The machine is running!");
     }
@@ -67,4 +66,5 @@ function CoffeeMachine(power, capacity) {
 
 }
 
-console.log(new CoffeeMachine(200, 200).run());
+CoffeeMachine.prototype = Object.create(Machine.prototype);
+// CoffeeMachine.prototype.__proto__ = Machine.prototype;
