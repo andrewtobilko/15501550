@@ -2,9 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="script.js"></script>
 </head>
 <body>
-$END$
+<h1>Task #1</h1>
+<div class="f-task-wrp">
+    <input type="text" id="input1" onkeyup="handleFirstTask()">
+    <button id="text1" class="hidden" onclick="clear()">X</button>
+</div>
+
+<h2>Task #2</h2>
+<div class="s-task-wrp">
+    <input type="text" id="input2" onblur="onBlur()">
+    <div id="placeholder">Placeholder</div>
+</div>
 </body>
 </html>
